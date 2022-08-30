@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="container" class="container">
+    <div id="overlay" class="overlay">Game Over!  Refresh to play again!</div>
+    <table class="boggleBoard">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <h1>Let's Play Boggle</h1>
+                    <p>You have 60 seconds!</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in range(board_size) %}
+                <tr>
+                    {% for y in range(board_size) %}
+                        <td class="{{x}}-{{y}}">{{ board[x][y] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form id="user-guess-form">
+        <label for="user_guess">Make a guess: </label>
+        <input type="text" id="user_guess" name="user_guess"/>
+        <button>Submit</button>
+    </form>
+    <div id="server-response" class="server-response"></div>
+    <div id="current-score" class="current-score">Your Current Score Is: <span id="current-score-cont"></span></div>
+</div>
+{% endblock %}
